@@ -1,0 +1,43 @@
+{
+  "name": "famous-angular",
+  "description": "Bring structure to your Famo.us apps with the power of AngularJS. Famo.us/Angular integrates seamlessly with existing Angular and Famo.us apps.",
+  "license": "MPL v2.0",
+  "homepage": "https://github.com/Famous/famous-angular",
+  "main": "dist/famous-angular.js",
+  "dependencies": {
+    "angular": "1.2.21",
+    "famous": "http://code.famo.us/famous/global/0.2.2/famous-global-0.2.2.tar.gz"
+  },
+  "devDependencies": {
+    "angular-mocks": "1.2.21"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "docs",
+    "bower_components",
+    "test",
+    "gulpfile.js",
+    "angus-site",
+    "docs-generation",
+    "famous-angular-docs",
+    "famous-angular-examples",
+    "src",
+    "famous-angular.pdf",
+    "init_submodules.sh",
+    "karma.conf.js",
+    "karma-e2e.conf.js",
+    "package.json",
+    "changelog.js",
+    "validateCommitMsg.js"
+  ],
+  "_release": "4c8dc263c3",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "4c8dc263c3bbb77ab95f393016339cc9b5f27eb8"
+  },
+  "_source": "https://github.com/Famous/famous-angular.git",
+  "_target": "master",
+  "_originalSource": "https://github.com/Famous/famous-angular.git"
+}
