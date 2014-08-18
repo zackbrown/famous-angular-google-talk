@@ -478,6 +478,27 @@ myView.add(mySurface);
           <h2>What about performance?</h2>
           <div class='row slide-content'>
             <div class="col-xs-6" style="font-size: 30px;">
+              <ul>
+                <li>Performance was a top priority in designing the integration.</li>
+                <li>In the single-threaded land of JavaScript, we need to be extra careful: any synchronous, thread-blocking code that runs longer than .0167 (1/60) seconds will stutter Famo.us animations</li>
+                <li>Unfortunately, Angular's digest cycle can be... hungry (get it?)</li>
+                <li>We needed to find a way to decouple Angular's digest cycle from Famo.us render cycle.</li>  
+              </ul>
+            </div>
+          </div>
+        </section>
+
+
+        <section>
+          <h2>Decouple all the cycles!</h2>
+          <div class='row slide-content'>
+            <div class="col-xs-6" style="font-size: 30px;">
+              <ul>
+                <li>Performance was a top priority in designing the integration.</li>
+                <li>In the single-threaded land of JavaScript, we need to be extra careful: any synchronous, thread-blocking code that runs longer than .0167 (1/60) seconds will stutter Famo.us animations</li>
+                <li>Unfortunately, Angular's digest cycle can be... hungry (get it?)</li>
+                <li>We needed to find a way to decouple Angular's digest cycle from Famo.us render cycle.</li>  
+              </ul>
             </div>
           </div>
         </section>
