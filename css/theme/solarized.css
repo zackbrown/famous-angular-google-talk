@@ -115,13 +115,27 @@ body {
   color: #FFFFFA; }
 
 
-.reveal .footer-logo {
+.reveal .footer-logos {
+  z-index: 10;
   position: fixed;
   left: 30px;
-  bottom: 30px;
-  width: 125px;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
+  bottom: 20px;
+}
+
+.reveal .footer-logos .ts {
+  width: 82px;
+  margin-top: -35px;
+}
+
+.reveal .footer-logos .famous {
+  width: 28px;
+  margin-left: 15px;
+}
+
+.reveal .footer-logos .angularjs {
+  width: 84px;
+  margin-left: 15px;
+  margin-top: -30px;
 }
 
 ::selection {
@@ -211,15 +225,10 @@ body {
 }
 
 
+
 .reveal .right-column-code {
   max-height: 500px;
-  margin-top: -60px;
 }
-
-.reveal a:hover img {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgb(58, 195, 206);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.55); }
 
 /*********************************************
  * NAVIGATION CONTROLS

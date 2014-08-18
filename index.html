@@ -58,7 +58,11 @@
 
 		<div class="reveal">
 
-      <img class="footer-logo" src="img/thomas-street-logo-parchment.svg" />
+      <div class="footer-logos">
+        <a href="http://thomasstreet.com"><img class="ts no-border" src="img/thomas-street-logo-parchment.svg" /></a>
+        <a href="http://famo.us"><img class="famous no-border" src="img/famous-parchment.svg" /></a>
+        <a href="http://angularjs.org"><img class="angularjs no-border" src="img/angularjs.svg" /></a>
+      </div>
 
 
 			<!-- Any section element inside of this container is displayed as a slide -->
@@ -105,7 +109,7 @@
               </div>
 						</div>
 						<div class="col-xs-6">
-							<iframe style="border: 2px solid #FFFFFA" width="320" height="568" src="embed/flickrous/index.html"></iframe>
+							<iframe style="border: 3px solid #FFFFFA" width="320" height="568" src="embed/flickrous/index.html"></iframe>
 						</div>
 					</div>
 				</section>
@@ -245,7 +249,7 @@
 								</code>
 							</pre>
 							<p style="margin-top: -30px;">
-							<small>Declarative CSS from a CSS animation generator (cssanimate.com)</small>
+							<small>(Verbose) declarative CSS from a CSS animation generator (cssanimate.com)</small>
 							</p>
 						</div>
 					</div>
@@ -495,7 +499,7 @@ myView.add(mySurface);
                 <li>In the single-threaded land of JavaScript, we need to be extra careful: any synchronous, thread-blocking code that runs longer than .0167 (1/60) seconds will stutter Famo.us animations</li>
                 <li>Unfortunately, Angular's digest cycle can be hungry... (get it?)</li>
                 <li>Requiring digests to reflect changes in Famo.us state was a non-starter</li>
-                <li>We needed to find a way to decouple Angular's digest cycle from Famo.us render cycle.</li>  
+                <li>We needed to find a way to decouple Angular's digest cycle from Famo.us's render cycle.</li>  
               </ul>
             </div>
           </div>
@@ -522,7 +526,7 @@ myView.add(mySurface);
               <div class="col-xs-6">
                 <ol>
                   <li>Use Angular's $parse to create functions that get bound directly to Famo.us Modifiers</li>
-                  <li>Enforce a unidirectional flow from Angular to Famo.us so that Famo.us doesn't incur side-effects (digests) during its rendering.</li>
+                  <li>Enforce a <strong>unidirectional flow</strong> from Angular to Famo.us so that Famo.us doesn't incur side-effects (digests) during its rendering.</li>
                 </ol>
               </div>
             </div>
