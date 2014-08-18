@@ -412,13 +412,13 @@ sync.on('update', function(data){
             <div class="col-xs-6" style="font-size: 30px;">
               <ul>
                 <li>Angular's directive compilation phase has three customizable steps: the compile function and the pre- and post-link functions.</li>
-                <li>In relation to the scope tree (hierarchy) the compile and pre-link functions execute in a pre-order traversal and the the post-links execute in a post-order traversal</li>
-                <li>So on the pre-link, we set up event listeners, on the post-link, we fire events; sort of like setting up a bunch of dominos in one pass (downward) and then toppling them all (upward.)</li>
+                <li>In relation to the scope tree the compile and pre-link functions execute in a pre-order traversal and the the post-links execute in a post-order traversal</li>
+                <li>So on the pre-link, we set up event listeners, on the post-link, we fire events.</li>
               </ul>
             </div>
             <div class="col-xs-6">
-              <img src="img/scopes.png" />
-              <em><small>Angular Scope Hierarchy (from Batarang)</small></em>
+              <img src="img/scopes.svg" />
+              <em><small>Any time a post-link fires, all of that scopes ancestors have already fired their pre-links</small></em>
             </div>
           </div>
         </section>
@@ -477,11 +477,11 @@ myView.add(mySurface);
         <section>
           <h2>What about performance?</h2>
           <div class='row slide-content'>
-            <div class="col-xs-6" style="font-size: 30px;">
+            <div class="col-xs-12" style="font-size: 30px;">
               <ul>
                 <li>Performance was a top priority in designing the integration.</li>
                 <li>In the single-threaded land of JavaScript, we need to be extra careful: any synchronous, thread-blocking code that runs longer than .0167 (1/60) seconds will stutter Famo.us animations</li>
-                <li>Unfortunately, Angular's digest cycle can be... hungry (get it?)</li>
+                <li>Unfortunately, Angular's digest cycle can be hungry... (get it?)</li>
                 <li>We needed to find a way to decouple Angular's digest cycle from Famo.us render cycle.</li>  
               </ul>
             </div>
@@ -491,48 +491,65 @@ myView.add(mySurface);
 
         <section>
           <h2>Decouple all the cycles!</h2>
+          <div class='slide-content' style='margin-top: 10px;'>
+            <div class="row">
+              <div class="col-xs-2">&nbsp;</div>
+              <div class="col-xs-8">
+                <img src="img/cycles.svg" />
+              </div>
+            </div>
+            <div class="row" style="font-size: 24px;">
+              <div class="col-xs-6">
+                <ul>
+                  <li>Our approach to decoupling Angular's digest cycle from Famo.us's render cycle was two-pronged:
+                    
+                  </li>
+                </ul>
+              </div>
+              <div class="col-xs-6">
+                <ol>
+                  <li>Use Angular's $parse to create functions that get bound directly to Famo.us Modifiers</li>
+                  <li>Enforce a unidirectional flow from Angular to Famo.us so that Famo.us doesn't incur side-effects (digests) during its rendering.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>So what can I do with Famo.us/Angular?</h2>
           <div class='row slide-content'>
-            <div class="col-xs-6" style="font-size: 30px;">
+            <div class="col-xs-12" style="font-size: 30px;">
               <ul>
-                <li>Performance was a top priority in designing the integration.</li>
-                <li>In the single-threaded land of JavaScript, we need to be extra careful: any synchronous, thread-blocking code that runs longer than .0167 (1/60) seconds will stutter Famo.us animations</li>
-                <li>Unfortunately, Angular's digest cycle can be... hungry (get it?)</li>
-                <li>We needed to find a way to decouple Angular's digest cycle from Famo.us render cycle.</li>  
+                <li>You can build awesome apps!</li>
+                <li>Famo.us takes the ceiling off of web animations and lets you design and build for interaction.</li>
+                <li>Angular gives you testability, structure, data-binding, and a rich ecosystem of components.</li>
+                <li>Famo.us/Angular lets you bring them both together, passing into/out of Famo.us anywhere in your app.</li>
+                <li>Since Famo.us/Angular compiles to Famo.us, this integration provides a portal from Angular to Famo.us even if Famo.us makes more radical steps into the future (mixed-mode WebGL and DOM, native GL?)</li>
               </ul>
             </div>
           </div>
         </section>
 
+        <section>
+          <h2>Resources</h2>
+          <div class='row slide-content'>
+            <div class="col-xs-12" style="font-size: 30px;">
+              <ul>
+                <li>This slide deck: <a href="http://thomasstreet.com/famous-angular-google">http://thomasstreet.com/famous-angular-google</a>
+                <li>Famo.us/Angular project page: <a href="https://famo.us/angular">https://famo.us/angular</a></li>
+                <li>Github repo: <a href="https://github.com/Famous/famous-angular">https://github.com/Famous/famous-angular</a></li>
+                <li>Examples: <a href="https://github.com/thomasstreet/famous-angular-examples">https://github.com/thomasstreet/famous-angular-examples</a></li>
+                <li>Starter Project: <a href="https://github.com/thomasstreet/famous-angular-starter">https://github.com/thomasstreet/famous-angular-starter</a></li>
+                <li>Flickrous Demo:  <a href="https://github.com/zackbrown/flickrous">https://github.com/zackbrown/flickrous</a></li>
+                <li>Famo.us Labs: email <a href="mailto:labs@famo.us">labs@famo.us</a></li>
+                <li>or email me <a href="mailto:zack@thomasstreet.com">zack@thomasstreet.com</a></li>
+              </ul>
+            </div>
+          </div>
+        </section>
 
-				<section>
-					<section id="fragments">
-						<h2>Fragmented Views</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<ol>
-							<li class="fragment"><code>any type</code></li>
-							<li class="fragment"><em>of view</em></li>
-							<li class="fragment"><strong>fragments</strong></li>
-						</ol>
-
-						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
-						</aside>
-					</section>
-					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's a few styles of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment roll-in">roll-in</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-green">highlight-green</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
-						<p class="fragment current-visible">current-visible</p>
-						<p class="fragment highlight-current-blue">highlight-current-blue</p>
-					</section>
-				</section>
+		
 
 			</div>
 
