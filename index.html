@@ -65,7 +65,7 @@
 					<p style="margin-top: 240px;">
 						<small>Presented by <a href="mailto:zack@thomasstreet.com">Zack Brown</a> | <a href="http://twitter.com/zackaboo">@zackaboo</a></small>
 					</p>
-					<p style="margin-top: -14px"><small>from <a href="http://thomasstreet.com"><img src="img/ts-logo-midnight.svg" style="width: 125px; margin: -1px 0 0 10px; border: none;" /></a></small></p>
+					<p style="margin-top: -14px"><small>from <a href="http://thomasstreet.com"><img class="no-border" src="img/thomas-street-logo-parchment.svg" style="width: 125px; margin: -1px 0 0 10px; border: none;" /></a></small></p>
 				</section>
 
 				<section>
@@ -79,7 +79,7 @@
 							</ul>
 						</div>
 						<div class="col-xs-6">
-							<img src="img/famous-logo.svg" class="no-border" style="width: 250px; margin-top: 25px;" />
+							<img src="img/famous-parchment.svg" class="no-border" style="width: 250px; margin-top: 45px;" />
 						</div>
 					</div>
 				</section>
@@ -96,7 +96,7 @@
 							</div>
 						</div>
 						<div class="col-xs-6">
-							<iframe width="320" height="568" src="embed/flickrous/index.html"></iframe>
+							<iframe style="border: 2px solid #FFFFFA" width="320" height="568" src="embed/flickrous/index.html"></iframe>
 						</div>
 					</div>
 				</section>
@@ -247,7 +247,7 @@
 					<div class='row slide-content'>
 						<div class="col-xs-6">
 							<ul>
-								<li>When it comes to this divide, Famo.us's philosophy is that <em>interaction-based animations are fundamentally better suited to imperative code</em></li>
+								<li>When it comes to this divide, Famo.us's philosophy is that <em>interactive animations are fundamentally better suited to imperative code</em></li>
 								<li>The present-day landscape of mobile apps has spoiled users into expecting richly responsive experiences.</li>
 								<li>Famo.us lets you design and build apps in the browser as if you were building for a mobile device.</li>
 							</ul>
@@ -346,11 +346,11 @@ sync.on('update', function(data){
 					<div class='row slide-content'>
 						<div class="col-xs-12">
 							<ul>
-								<li class="fragment">When I first started learning Famo.us back in March, Angular was a bad word</li>
-								<li class="fragment">As an Angular fan, I decided to keep my head down and just learn Famo.us to see what the fuss was about</li>
-								<li class="fragment">As I started to wrap my head around Famo.us,  I started to get an idea about how an integration might work.</li>
-								<li class="fragment">My team at Thomas Street was able to put together a proof-of-concept and get Famo.us’s support to continue building the project.</li>
-								<li class="fragment">Over the last 5 months, Famo.us has actually become very interested in AngularJS.</li>
+								<li>When I first started learning Famo.us back in March, Angular was a bad word</li>
+								<li>As an Angular fan, I decided to keep my head down and just learn Famo.us to see what the fuss was about</li>
+								<li>As I started to wrap my head around Famo.us,  I started to get an idea about how an integration might work.</li>
+								<li>My team at Thomas Street was able to put together a proof-of-concept and get Famo.us’s support to continue building the project.</li>
+								<li>Over the last 5 months, Famo.us has actually become very interested in AngularJS.</li>
 							</ul>
 						</div>
 					</div>
@@ -404,8 +404,83 @@ sync.on('update', function(data){
 						</div>
 					</div>
 				</section>
-				
 
+
+        <section>
+          <h3>Communicating hierarchy (cont.)</h3>
+          <div class='row slide-content'>
+            <div class="col-xs-6" style="font-size: 30px;">
+              <ul>
+                <li>Angular's directive compilation phase has three customizable steps: the compile function and the pre- and post-link functions.</li>
+                <li>In relation to the scope tree (hierarchy) the compile and pre-link functions execute in a pre-order traversal and the the post-links execute in a post-order traversal</li>
+                <li>So on the pre-link, we set up event listeners, on the post-link, we fire events; sort of like setting up a bunch of dominos in one pass (downward) and then toppling them all (upward.)</li>
+              </ul>
+            </div>
+            <div class="col-xs-6">
+              <img src="img/scopes.png" />
+              <em><small>Angular Scope Hierarchy (from Batarang)</small></em>
+            </div>
+          </div>
+        </section>
+
+
+        <section>
+          <h2>The result</h2>
+          <div class='row slide-content'>
+            <div class="col-xs-6" style="font-size: 30px;">
+              <ul>
+                <li>Since Angular's scope hierarchy maps to Famo.us's render tree hierarchy, this lets us write library directives that create Famo.us's render tree components</li>
+                <li>This has turned out to be an excellent use of Angular's directives to extend the vocabulary of HTML</li>
+                <li>Famo.us/Angular's directives are essentially an HTML DSL for Famo.us</li>
+              </ul>
+            </div>
+            <div class="col-xs-6">
+              <ul>
+                <li>For example, this Famo.us code:</li>
+                <li><pre><code>
+var myView = new View();
+var mySurface = new Surface();
+mySurface.setContent("<div>I'm a surface</div>");
+myView.add(mySurface);
+                </code></pre></li>
+                <li>looks like this in Famo.us/Angular:</li>
+                <li><pre><code>
+<fa-view>
+  <fa-surface>
+    <div>I'm {{data.bound}}</div>
+  </fa-surface>
+</fa-view>
+                </code></pre></li>
+                <p><small><em>Notice how easy it is to databind!</em></small></p>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+				
+        <section>
+          <h2>Why would I want to use HTML?</h2>
+          <div class='row slide-content'>
+            <div class="col-xs-12" style="font-size: 30px;">
+              <ul>
+                <li>It makes it extremely easy to integrate Famo.us with any existing HTML or Angular apps.</li>
+                <li>It allows you to use Angular's data-binding within Famo.us components.</li>
+                <li>It encourages a clean architectural separation of concerns (view layer.)</li>
+                <li>It allows you to use custom directives (pre-existing, third-party, or new ones) inside of your Famo.us apps</li>
+                <li>And of course you get the rest of the benefits of Angular, like testability, organization, and streamlined data management.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+
+        <section>
+          <h2>What about performance?</h2>
+          <div class='row slide-content'>
+            <div class="col-xs-6" style="font-size: 30px;">
+            </div>
+          </div>
+        </section>
 
 
 				<section>

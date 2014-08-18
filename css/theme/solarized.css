@@ -104,19 +104,19 @@ html * {
  * GLOBAL STYLES
  *********************************************/
 body {
-  background: #fdf6e3;
-  background-color: #fdf6e3; }
+  background: rgb(6, 23, 47);
+  background-color: rgb(6, 23, 47); }
 
 .reveal {
   font-family: "OpenSans", sans-serif;
-  font-size: 33px;
+  font-size: 31px;
   font-weight: normal;
   letter-spacing: -0.02em;
-  color: #657b83; }
+  color: #FFFFFA; }
 
 ::selection {
-  color: white;
-  background: #d33682;
+  color: #FFFFFA;
+  background: rgb(58, 195, 206);
   text-shadow: none; }
 
 /*********************************************
@@ -129,18 +129,25 @@ body {
 .reveal h5,
 .reveal h6 {
   margin: 0 0 20px 0;
-  color: #586e75;
+  color: rgb(58, 195, 206);
   font-family: "Titillium", Impact, sans-serif;
   line-height: 0.9em;
   letter-spacing: 0.02em;
   text-shadow: none; }
 
 .reveal h1 {
-  text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2); font-size: 3em; font-weight: bold; }
+  color: #FFFFFA;
+  font-size: 2.5em; font-weight: bold;
+}
 
 
 .reveal h2 {
-  font-weight: 700;
+  font-weight: 500;
+  font-size: 1.33em;
+}
+
+.reveal h3 {
+  font-weight: 400;
 }
 
 .reveal ul li {
@@ -156,7 +163,7 @@ body {
  * LINKS
  *********************************************/
 .reveal a:not(.image) {
-  color: #268bd2;
+  color: rgb(58, 195, 206);
   text-decoration: none;
   -webkit-transition: color .15s ease;
   -moz-transition: color .15s ease;
@@ -190,6 +197,7 @@ body {
 .reveal section .no-border {
   border: none;
   box-shadow: none;
+  background: none;
 }
 
 
@@ -200,7 +208,7 @@ body {
 
 .reveal a:hover img {
   background: rgba(255, 255, 255, 0.2);
-  border-color: #268bd2;
+  border-color: rgb(58, 195, 206);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.55); }
 
 /*********************************************
@@ -208,19 +216,19 @@ body {
  *********************************************/
 .reveal .controls div.navigate-left,
 .reveal .controls div.navigate-left.enabled {
-  border-right-color: #268bd2; }
+  border-right-color: rgb(58, 195, 206); }
 
 .reveal .controls div.navigate-right,
 .reveal .controls div.navigate-right.enabled {
-  border-left-color: #268bd2; }
+  border-left-color: rgb(58, 195, 206); }
 
 .reveal .controls div.navigate-up,
 .reveal .controls div.navigate-up.enabled {
-  border-bottom-color: #268bd2; }
+  border-bottom-color: rgb(58, 195, 206); }
 
 .reveal .controls div.navigate-down,
 .reveal .controls div.navigate-down.enabled {
-  border-top-color: #268bd2; }
+  border-top-color: rgb(58, 195, 206); }
 
 .reveal .controls div.navigate-left.enabled:hover {
   border-right-color: #78b9e6; }
@@ -241,7 +249,7 @@ body {
   background: rgba(0, 0, 0, 0.2); }
 
 .reveal .progress span {
-  background: #268bd2;
+  background: rgb(58, 195, 206);
   -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
   -moz-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
   -ms-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
@@ -252,4 +260,4 @@ body {
  * SLIDE NUMBER
  *********************************************/
 .reveal .slide-number {
-  color: #268bd2; }
+  color: rgb(58, 195, 206); }
