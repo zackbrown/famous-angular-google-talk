@@ -114,6 +114,16 @@ body {
   letter-spacing: -0.02em;
   color: #FFFFFA; }
 
+
+.reveal .footer-logo {
+  position: fixed;
+  left: 30px;
+  bottom: 30px;
+  width: 125px;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
 ::selection {
   color: #FFFFFA;
   background: rgb(58, 195, 206);

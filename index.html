@@ -55,7 +55,11 @@
 
 	<body>
 
+
 		<div class="reveal">
+
+      <img class="footer-logo" src="img/thomas-street-logo-parchment.svg" />
+
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
@@ -66,6 +70,7 @@
 						<small>Presented by <a href="mailto:zack@thomasstreet.com">Zack Brown</a> | <a href="http://twitter.com/zackaboo">@zackaboo</a></small>
 					</p>
 					<p style="margin-top: -14px"><small>from <a href="http://thomasstreet.com"><img class="no-border" src="img/thomas-street-logo-parchment.svg" style="width: 125px; margin: -1px 0 0 10px; border: none;" /></a></small></p>
+
 				</section>
 
 				<section>
@@ -94,6 +99,10 @@
 								<p><small>(Code available at <a href="https://github.com/zackbrown/flickrous">https://github.com/zackbrown/flickrous</a>)</small></p>
 								<p><small><em>This demo is designed for touch input.  If viewing on a desktop browser, try turning on touch emulation in the console</em></small></p>
 							</div>
+              <div style="margin-top: 30px;">
+              <small>
+              Also, Famebook Paper (touch device or touch emulation required)  <a href="http://demo.famo.us/paper">http://demo.famo.us/paper</a></small>
+              </div>
 						</div>
 						<div class="col-xs-6">
 							<iframe style="border: 2px solid #FFFFFA" width="320" height="568" src="embed/flickrous/index.html"></iframe>
@@ -298,10 +307,10 @@ sync.on('update', function(data){
 					<div class='row slide-content'>
 						<div class="col-xs-12">
 							<ul>
-								<li>Famo.us syncs ticks of its Engine to requestAnimationFrame to keep things smooth (ideally, 60 FPS)</li>
+								<li>Famo.us makes use of CSS3’s Matrix3D transforms, which gives it its GPU-accelerated performance</li>
+                <li>Famo.us syncs ticks of its Engine to requestAnimationFrame to keep things smooth (ideally, 60 FPS)</li>
 								<li>On each tick, it composites its scene graph using some linear algebra goodness to a set of individually positionable outputs</li>
 								<li>This is extra cool because though it’s focused on browsers now, Famo.us is agnostic of its output layer (DOM, WebGL, ...native?!)</li>
-								<li>Famo.us makes use of CSS3’s Matrix3D transforms, which gives it its GPU-accelerated performance</li>
 							</ul>
 						</div>
 					</div>
@@ -319,7 +328,10 @@ sync.on('update', function(data){
 								<li>But Famo.us doesn't use the DOM:  it has its own vocabulary of Surfaces and Views and Modifiers instead of Divs and Spans and Ps</li>
 							</ul>
 						</div>
-						<div class="col-xs-4">
+            <div class="col-xs-1">
+              &nbsp;
+            </div>
+						<div class="col-xs-3">
 							<img class="no-border" src="img/javascript-logo.png" />
 						</div>
 					</div>
@@ -393,7 +405,7 @@ sync.on('update', function(data){
 					<div class='row slide-content'>
 						<div class="col-xs-6" style="font-size: 30px;">
 							<ul>
-								<li>Angular maintains a hierarchy of child scopes which maps to the hierarchy of directives in the DOM.</li>
+								<li>Angular maintains a hierarchy of child scopes, which maps to the hierarchy of directives in the DOM.</li>
 								<li>This scope hierarchy is what we decided to tranform into the Famo.us render tree hierarchy</li>
 								<li>The way we solved this was with eventing:  every child sends an event to its parent.  As the scope hierarchy is traversed with these events, the directives string the corresponding Famo.us components together.</li>
 							</ul>
@@ -482,6 +494,7 @@ myView.add(mySurface);
                 <li>Performance was a top priority in designing the integration.</li>
                 <li>In the single-threaded land of JavaScript, we need to be extra careful: any synchronous, thread-blocking code that runs longer than .0167 (1/60) seconds will stutter Famo.us animations</li>
                 <li>Unfortunately, Angular's digest cycle can be hungry... (get it?)</li>
+                <li>Requiring digests to reflect changes in Famo.us state was a non-starter</li>
                 <li>We needed to find a way to decouple Angular's digest cycle from Famo.us render cycle.</li>  
               </ul>
             </div>
@@ -524,7 +537,7 @@ myView.add(mySurface);
                 <li>You can build awesome apps!</li>
                 <li>Famo.us takes the ceiling off of web animations and lets you design and build for interaction.</li>
                 <li>Angular gives you testability, structure, data-binding, and a rich ecosystem of components.</li>
-                <li>Famo.us/Angular lets you bring them both together, passing into/out of Famo.us anywhere in your app.</li>
+                <li>Famo.us/Angular lets you bring them both together, passing into/out of Famo.us containers anywhere in your app.</li>
                 <li>Since Famo.us/Angular compiles to Famo.us, this integration provides a portal from Angular to Famo.us even if Famo.us makes more radical steps into the future (mixed-mode WebGL and DOM, native GL?)</li>
               </ul>
             </div>
