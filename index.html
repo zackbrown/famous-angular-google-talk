@@ -37,6 +37,17 @@
 			}
 		</script>
 
+    <!-- Google analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-49963269-1', 'thomasstreet.com');
+      ga('send', 'pageview');
+    </script>
+
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
@@ -78,9 +89,11 @@
 					<h2>What is Famo.us? (cont.)</h2>
 					<div class='row slide-content'>
 						<div class="col-xs-6">
-							<p>Demo: 'flickrous'</p>
-							<p><small>(Code available at <a href="https://github.com/zackbrown/flickrous">https://github.com/zackbrown/flickrous</a>)</small></p>
-							<p><small><em>This demo is designed for touch input.  If viewing on a desktop browser, try turning on touch emulation in the console</em></small></p>
+							<div style="margin-top: 175px;">
+								<strong>Demo: 'flickrous'</strong>
+								<p><small>(Code available at <a href="https://github.com/zackbrown/flickrous">https://github.com/zackbrown/flickrous</a>)</small></p>
+								<p><small><em>This demo is designed for touch input.  If viewing on a desktop browser, try turning on touch emulation in the console</em></small></p>
+							</div>
 						</div>
 						<div class="col-xs-6">
 							<iframe width="320" height="568" src="embed/flickrous/index.html"></iframe>
@@ -327,6 +340,70 @@ sync.on('update', function(data){
 					</div>
 				</section>
 
+
+				<section>
+					<h2>A quick bit of history</h2>
+					<div class='row slide-content'>
+						<div class="col-xs-12">
+							<ul>
+								<li class="fragment">When I first started learning Famo.us back in March, Angular was a bad word</li>
+								<li class="fragment">As an Angular fan, I decided to keep my head down and just learn Famo.us to see what the fuss was about</li>
+								<li class="fragment">As I started to wrap my head around Famo.us,  I started to get an idea about how an integration might work.</li>
+								<li class="fragment">My team at Thomas Street was able to put together a proof-of-concept and get Famo.us’s support to continue building the project.</li>
+								<li class="fragment">Over the last 5 months, Famo.us has actually become very interested in AngularJS.</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+
+				<section>
+					<h2>So what would an ideal integration look like?</h2>
+					<h4>When getting started, we outlined a handful of requirements</h4>
+					<div class='row slide-content'>
+						<div class="col-xs-12">
+							<ul>
+								<li>Maintain Famo.us’s rendering performance</li>
+								<li>Support Angular’s data-binding</li>
+								<li>Support using existing Angular components (incl. third-party)</li>
+								<li>Support using existing Famo.us components (incl. third-party)</li>
+								<li>Minimize conceptual overhead by leaning on each library’s conventions when possible</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+
+				<section>
+					<h2>And how to get started?</h2>
+					<div class='row slide-content'>
+						<div class="col-xs-12">
+							<ul>
+								<li>Our first clue was the observation that Famo.us’s RenderTree is simply that—a tree, just like the DOM</li>
+								<li>Instead of trying to get both frameworks to live in the same space, simultaneously trying to manipulate the same DOM elements, what if we introduced a compilation step?</li>
+								<li>Angular is already a DOM compiler (directives.)  The tricky piece is communicating the structure of the DOM—its hierarchy—to Famo.us.</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+
+				<section>
+					<h2>Communicating hierarchy</h2>
+					<div class='row slide-content'>
+						<div class="col-xs-6" style="font-size: 30px;">
+							<ul>
+								<li>Angular maintains a hierarchy of child scopes which maps to the hierarchy of directives in the DOM.</li>
+								<li>This scope hierarchy is what we decided to tranform into the Famo.us render tree hierarchy</li>
+								<li>The way we solved this was with eventing:  every child sends an event to its parent.  As the scope hierarchy is traversed with these events, the directives string the corresponding Famo.us components together.</li>
+							</ul>
+						</div>
+						<div class="col-xs-6">
+							<img src="img/scopes.png" />
+							<em><small>Angular Scope Hierarchy (from Batarang)</small></em>
+						</div>
+					</div>
+				</section>
 				
 
 
