@@ -11,7 +11,7 @@ angular.module('flickr-client')
     return {
       //gets a list of photos, returns an object containing the string and a promise
       getPhotoSearchList: function(searchTerm){
-        var url = _getBaseUrl() + "flickr.photos.search&in_gallery=true&per_page="+PER_PAGE+"&text=" + searchTerm;
+        var url = _getBaseUrl() + "flickr.photos.search&in_gallery=true&is_commons=true&per_page="+PER_PAGE+"&text=" + searchTerm;
         return $http.jsonp(url);
       },
       getPhotosByGalleryId: function(galleryId){
